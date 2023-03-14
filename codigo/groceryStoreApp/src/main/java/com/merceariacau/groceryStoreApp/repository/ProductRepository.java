@@ -1,25 +1,13 @@
 package com.merceariacau.groceryStoreApp.repository;
 
-import com.merceariacau.groceryStoreApp.model.Product;
+import java.util.UUID;
 
-public class ProductRepository {
-    
-    public boolean createProduct(Product product){
-        //TODO conectar com o banco
-        return true;
-    }
-    
-    public Product getProduct(Integer id) {
-    	return 
-    }
-    
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-    public boolean updateProduct(Product product){
-        //TODO conectar com o banco
-        return true;
-    }
+import com.merceariacau.groceryStoreApp.controller.model.Product;
 
-    public void deleteProduct(Product product){
-        //TODO conectar com o banco
-    }
+@Repository
+public interface ProductRepository extends JpaRepository<Product, UUID>{
+    
 }

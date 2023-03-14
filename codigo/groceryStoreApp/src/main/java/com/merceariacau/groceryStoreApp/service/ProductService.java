@@ -1,30 +1,35 @@
 package com.merceariacau.groceryStoreApp.service;
 
+import java.util.UUID;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.merceariacau.groceryStoreApp.controller.model.Product;
 import com.merceariacau.groceryStoreApp.repository.ProductRepository;
 
-import lombok.RequiredArgsConstructor;
+import jakarta.transaction.Transactional;
 
 @Service
 public class ProductService {
 
+	@Autowired
     private ProductRepository repository;
 
     public Product createProduct(Product product) {
-        return repository.createProduct(product);
+        return repository.save(product);
     }
     
-    public Product getProduct(Integer id) {
-    	return repository.getProduct(id);
+    public Product getProduct(UUID productId) {
+    	return repository.findById(productId).orElseThrow();
     }
 
     public Product updateProduct(Product product) {
-        return repository.updateProduct(product);
+        return repository.save(product);
     }
 
-    public void deleteProduct(Product product) {
-        return repository.updateProduct(product);
+    @Transactional
+    public void deleteProduct(UUID productId) {
+        repository.deleteById(productId);
     }
 }

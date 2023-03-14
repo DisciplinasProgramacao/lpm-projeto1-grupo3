@@ -1,5 +1,7 @@
 package com.merceariacau.groceryStoreApp.controller.model;
 
+import java.util.UUID;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -13,23 +15,23 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @Entity
-@Table(name = "Employee", uniqueConstraints = { @UniqueConstraint(columnNames = { "ID" }) })
+@Table(name = "Products", uniqueConstraints = { @UniqueConstraint(columnNames = { "ID" }) })
 public class Product {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID", nullable = false, unique = true, length = 11)
-	private Integer id;
+	private UUID id;
 	@Column(name = "DESCRIPTION", length = 20, nullable = false)
 	private String description;
-	@Column(name = "SALEPRICE", length = 10, nullable = true)
+	@Column(name = "SALE_PRICE", length = 10, nullable = false)
 	private Double salePrice;
-	@Column(name = "COSTPRICE", length = 10, nullable = true)
+	@Column(name = "COST_PRICE", length = 10, nullable = false)
 	private Double costPrice;
-	@Column(name = "PROFITMARGIN", length = 10, nullable = true)
+	@Column(name = "PROFIT_MARGIN", length = 10, nullable = false)
 	private Double profitMargin;
-	@Column(name = "TAX", length = 10, nullable = true)
+	@Column(name = "TAX", length = 10, nullable = false)
 	private Double tax;
-	@Column(name = "QUANTITY", length = 10, nullable = true)
+	@Column(name = "QUANTITY", length = 10, nullable = false)
 	private Integer quantity;
 
 	public Product(String description, Double costPrice, Integer quantity, Integer percentageProfitMargin) {
