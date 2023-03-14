@@ -2,7 +2,7 @@ package com.merceariacau.groceryStoreApp.service;
 
 import org.springframework.stereotype.Service;
 
-import com.merceariacau.groceryStoreApp.model.Product;
+import com.merceariacau.groceryStoreApp.controller.model.Product;
 import com.merceariacau.groceryStoreApp.repository.ProductRepository;
 
 import lombok.RequiredArgsConstructor;

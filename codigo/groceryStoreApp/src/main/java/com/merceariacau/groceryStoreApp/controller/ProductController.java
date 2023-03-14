@@ -1,6 +1,7 @@
 package com.merceariacau.groceryStoreApp.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,28 +21,28 @@ public class ProductController {
     
     
     @PostMapping
-    public ResponseEntity<?> createProduct(Product product) {
+    public ResponseEntity<Product> createProduct(Product product) {
         service.createProduct(product);
 
-        return ResponseEntity<>();
+        return new ResponseEntity<>(HttpStatus.OK);
     }
     
     @GetMapping
-    public boolean getProduct(Product product) {
-        service.updateProduct(product);
+    public ResponseEntity<Product> getProduct(Product product) {
+        service.getClass(product);
 
         return true;
     }
 
     @PutMapping
-    public boolean updateProduct(Product product) {
+    public ResponseEntity<Product> updateProduct(Product product) {
         service.updateProduct(product);
 
         return true;
     }
 
     @DeleteMapping
-    public boolean deleteProduct(Product product) {
+    public ResponseEntity<void> deleteProduct(Product product) {
         service.updateProduct(product);
 
         return true;

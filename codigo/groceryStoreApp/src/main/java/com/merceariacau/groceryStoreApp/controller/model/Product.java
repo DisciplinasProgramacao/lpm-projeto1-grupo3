@@ -1,4 +1,4 @@
-package com.merceariacau.groceryStoreApp.model;
+package com.merceariacau.groceryStoreApp.controller.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -19,17 +19,17 @@ public class Product {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID", nullable = false, unique = true, length = 11)
 	private Integer id;
-	@Column(name = "DESCRIPTION", length = 20, nullable = true)
+	@Column(name = "DESCRIPTION", length = 20, nullable = false)
 	private String description;
-	@Column(name = "SALEPRICE", length = 20, nullable = true)
+	@Column(name = "SALEPRICE", length = 10, nullable = true)
 	private Double salePrice;
-	@Column(name = "COSTPRICE", length = 20, nullable = true)
+	@Column(name = "COSTPRICE", length = 10, nullable = true)
 	private Double costPrice;
-	@Column(name = "PROFITMARGIN", length = 20, nullable = true)
+	@Column(name = "PROFITMARGIN", length = 10, nullable = true)
 	private Double profitMargin;
-	@Column(name = "TAX", length = 20, nullable = true)
+	@Column(name = "TAX", length = 10, nullable = true)
 	private Double tax;
-	@Column(name = "QUANTITY", length = 20, nullable = true)
+	@Column(name = "QUANTITY", length = 10, nullable = true)
 	private Integer quantity;
 
 	public Product(String description, Double costPrice, Integer quantity, Integer percentageProfitMargin) {
