@@ -3,7 +3,6 @@ package com.merceariacau.groceryStoreApp.controller;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,23 +25,23 @@ public class ProductController {
     
     @PostMapping
     public ResponseEntity<Product> createProduct(@RequestBody Product product) {
-        return new ResponseEntity<>(service.createProduct(product),HttpStatus.CREATED);
+        return ResponseEntity.created(null).body(service.createProduct(product));
     }
     
     @GetMapping
     public ResponseEntity<Product> getProduct(@RequestHeader UUID productId) {
-        return new ResponseEntity<>(service.getProduct(productId), HttpStatus.OK);
+        return ResponseEntity.ok().body(service.getProduct(productId));
     }
 
     @PutMapping
     public ResponseEntity<Product> updateProduct(@RequestBody Product product) {
-        return new ResponseEntity<>(service.updateProduct(product), HttpStatus.CREATED);
+        return ResponseEntity.created(null).body(service.updateProduct(product));
     }
 
     @DeleteMapping
     public ResponseEntity<Void> deleteProduct(@RequestHeader UUID productId) {
     	service.deleteProduct(productId);
-        return new ResponseEntity<>(HttpStatus.OK);
+        return ResponseEntity.ok().body(null);
     }
 
 }
