@@ -1,26 +1,30 @@
 package com.merceariacau.groceryStoreApp.service;
 
 import org.springframework.stereotype.Service;
-import com.merceariacau.groceryStoreApp.controller.model.Product;
+
+import com.merceariacau.groceryStoreApp.model.Product;
 import com.merceariacau.groceryStoreApp.repository.ProductRepository;
 
 import lombok.RequiredArgsConstructor;
 
 @Service
-@RequiredArgsConstructor
 public class ProductService {
 
     private ProductRepository repository;
 
-    public boolean createProduct(Product product) {
+    public Product createProduct(Product product) {
         return repository.createProduct(product);
     }
+    
+    public Product getProduct(Integer id) {
+    	return repository.getProduct(id);
+    }
 
-    public boolean updateProduct(Product product) {
+    public Product updateProduct(Product product) {
         return repository.updateProduct(product);
     }
 
-    public boolean deleteProduct(Product product) {
+    public void deleteProduct(Product product) {
         return repository.updateProduct(product);
     }
 }

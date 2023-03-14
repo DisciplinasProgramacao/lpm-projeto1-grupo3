@@ -25,11 +25,11 @@ public class Product {
 	private Double salePrice;
 	@Column(name = "COSTPRICE", length = 20, nullable = true)
 	private Double costPrice;
-	@Column(name = "NAME", length = 20, nullable = true)
+	@Column(name = "PROFITMARGIN", length = 20, nullable = true)
 	private Double profitMargin;
-	@Column(name = "NAME", length = 20, nullable = true)
+	@Column(name = "TAX", length = 20, nullable = true)
 	private Double tax;
-	@Column(name = "NAME", length = 20, nullable = true)
+	@Column(name = "QUANTITY", length = 20, nullable = true)
 	private Integer quantity;
 
 	public Product(String description, Double costPrice, Integer quantity, Integer percentageProfitMargin) {
