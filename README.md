@@ -4,7 +4,8 @@ O projetor tem como objetivo a criação de um serviço para gerenciamento de es
 Não faz sentido que cada produto vendido tenha um preço com sua descrição, além da especificação do seu 
 preço de custo e de venda. Além disso, controle do registro de produtos, valores arrecadados de vendas por 
 item e seu monitoramento de quantidade no estoque. 
-Para o desenvolvimento vamos fazer a utilização das seguintes tecnologias: api rest, spring, arquitetura mvc, java como linguagem principal.
+Para o desenvolvimento vamos fazer a utilização das seguintes tecnologias: 
+api rest, spring, arquitetura mvc, java como linguagem principal.
 
 ## Alunos integrantes da equipe
 
