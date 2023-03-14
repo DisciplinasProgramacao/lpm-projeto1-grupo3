@@ -2,6 +2,7 @@ package com.merceariacau.groceryStoreApp.controller;
 
 import java.util.UUID;
 
+import com.merceariacau.groceryStoreApp.application.exceptions.ProductNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,26 +23,32 @@ import com.merceariacau.groceryStoreApp.service.ProductService;
 public class ProductController {
 	@Autowired
     ProductService service;
-    
-    
+
     @PostMapping
     public ResponseEntity<Product> createProduct(@RequestBody Product product) {
-        return new ResponseEntity<>(service.createProduct(product),HttpStatus.CREATED);
+        var response = service.createProduct(product);
+
+        return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
     
     @GetMapping
-    public ResponseEntity<Product> getProduct(@RequestHeader UUID productId) {
-        return new ResponseEntity<>(service.getProduct(productId), HttpStatus.OK);
+    public ResponseEntity<Product> getProduct(@RequestHeader UUID productId) throws ProductNotFoundException {
+        var response = service.getProduct(productId);
+
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
     @PutMapping
     public ResponseEntity<Product> updateProduct(@RequestBody Product product) {
-        return new ResponseEntity<>(service.updateProduct(product), HttpStatus.CREATED);
+        var response = service.updateProduct(product);
+
+        return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 
     @DeleteMapping
     public ResponseEntity<Void> deleteProduct(@RequestHeader UUID productId) {
     	service.deleteProduct(productId);
+
         return new ResponseEntity<>(HttpStatus.OK);
     }
 

@@ -2,6 +2,7 @@ package com.merceariacau.groceryStoreApp.controller.model;
 
 import java.util.UUID;
 
+import com.merceariacau.groceryStoreApp.application.exceptions.DescriptionLengthException;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -9,11 +10,16 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.assertj.core.util.VisibleForTesting;
 
 @Data
+@Builder
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "Products", uniqueConstraints = { @UniqueConstraint(columnNames = { "ID" }) })
 public class Product {
@@ -43,23 +49,26 @@ public class Product {
 		this.salePrice = calculateSalePrice(costPrice, profitMargin, tax);
 	}
 
-	private String validateDescription(String description) {
+	@VisibleForTesting
+	protected String validateDescription(String description) {
 		if (description.length() < 3) {
-			System.out.println("A descrição do produto deve conter pelo menos 3 caracteres.");
-			return null;
+			throw new DescriptionLengthException();
 		}
 		return description;
 	}
 
-	private Double calculateProfitMargin(Integer percentageProfitMargin, Double costPrice) {
+	@VisibleForTesting
+	protected Double calculateProfitMargin(Integer percentageProfitMargin, Double costPrice) {
 		return profitMargin = (percentageProfitMargin / 100) * costPrice;
 	}
 
-	private Double calculateTaxValue(Double costPrice, Double profitMargin) {
+	@VisibleForTesting
+	protected Double calculateTaxValue(Double costPrice, Double profitMargin) {
 		return tax = 0.18 * (costPrice + profitMargin);
 	}
 
-	private Double calculateSalePrice(Double costPrice, Double profitMargin, Double tax) {
+	@VisibleForTesting
+	protected Double calculateSalePrice(Double costPrice, Double profitMargin, Double tax) {
 		return salePrice = costPrice + profitMargin + tax;
 	}
 }
