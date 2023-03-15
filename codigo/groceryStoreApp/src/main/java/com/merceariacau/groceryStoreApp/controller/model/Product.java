@@ -37,13 +37,10 @@ public class Product {
 	private Double profitMargin;
 	@Column(name = "TAX", length = 10, nullable = false)
 	private Double tax;
-	@Column(name = "QUANTITY", length = 10, nullable = false)
-	private Integer quantity;
 
-	public Product(String description, Double costPrice, Integer quantity, Integer percentageProfitMargin) {
+	public Product(String description, Double costPrice, Integer percentageProfitMargin) {
 		this.description = validateDescription(description);
 		this.costPrice = costPrice;
-		this.quantity = quantity;
 		this.profitMargin = calculateProfitMargin(percentageProfitMargin, costPrice);
 		this.tax = calculateTaxValue(costPrice, profitMargin);
 		this.salePrice = calculateSalePrice(costPrice, profitMargin, tax);
