@@ -78,7 +78,6 @@ class ProductControllerTest {
                 .costPrice(10.0)
                 .profitMargin(300.0)
                 .tax(10.0)
-                .quantity(2)
                 .build();
     }
 }

@@ -24,17 +24,6 @@ class ProductTest {
         Assertions.assertThat(responseDescription).isEqualTo(validDescription);
     }
 
-    @Disabled
-    @Test
-    void shouldThrowExceptionIfDescriptionIsInvalid(){
-        var invalidDescription = "01";
-
-        Assertions.assertThatThrownBy(() -> productClass.validateDescription(invalidDescription))
-                .isInstanceOf(DescriptionLengthException.class)
-                .hasMessage("The product description must contain at least 3 characters.");
-
-    }
-
     @Test
     void shouldCalculateProfitMargin(){
         var percentageProfitMargin = 200;
